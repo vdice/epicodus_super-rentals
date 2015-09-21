@@ -1,0 +1,9 @@
+<h2>Cities</h2>
+
+<ul>
+  {{#each model as |city|}}
+    {{city-tile city=city destroyCity="destroyCity"}}
+  {{/each}}
+</ul>
+
+{{new-city save2="save3"}}

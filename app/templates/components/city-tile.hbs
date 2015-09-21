@@ -1,0 +1,17 @@
+<li>{{city.name}}
+  {{#if isImageShowing }}
+    <p><img src={{city.image}} {{action 'imageHide'}}></p>
+  {{else}}
+    <button {{action 'imageShow'}}>Show image</button>
+  {{/if}}
+  {{#if areAttractionsShowing }}
+    <ul {{action 'hideAttractions'}}>
+      {{#each city.attractions as |attraction|}}
+        <li>{{attraction}}</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <button class="btn btn-info" {{action 'showAttractions'}}>Show Attractions</button>
+  {{/if}}
+    <button class="btn" {{action 'delete' city}}>Delete</button>
+</li>
