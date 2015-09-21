@@ -17,6 +17,15 @@ export default Ember.Route.extend({
     destroyCity(city) {
       city.destroyRecord();
       this.transitionTo('cities');
+    },
+    editCity(city, params) {
+      Object.keys(params).forEach(function(key) {
+        if(params[key]!==undefined) {
+          city.set(key,params[key]);
+        }
+      });
+      city.save();
+      this.transitionTo('cities');
     }
   }
 });

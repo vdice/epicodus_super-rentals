@@ -14,4 +14,35 @@
     <button class="btn btn-info" {{action 'showAttractions'}}>Show Attractions</button>
   {{/if}}
     <button class="btn" {{action 'delete' city}}>Delete</button>
+  {{#if editCityBool}}
+    <h1>Edit City</h1>
+    <div>
+      <form>
+        <div class="form-group">
+          <label for="edit-name">Name</label>
+          {{input value=city.name class="edit-name" placeholder=city.name}}
+        </div>
+        <div class='edit-attractions-div'>
+
+        {{#each city.attractions as |attraction| }}
+          <div class="form-group">
+            <label for="edit-attractions">Attractions</label>
+            {{input class="edit-attractions" value=attraction placeholder=attraction}}
+          </div>
+        {{/each}}
+        </div>
+        <button {{action 'appendInput'}}>Add Another Attraction</button>
+
+        <div class="form-group">
+          <label for="edit-image">Image URL</label>
+          {{input value=city.image class="edit-image" placeholder=city.image}}
+        </div>
+
+        <button {{action 'editCity' city}}>Save Edit</button>
+        <button class="btn btn-warning" {{action 'editCityFormHide'}}>Cancel</button>
+      </form>
+    </div>
+  {{else}}
+    <button {{action 'editCityFormShow'}}>Edit</button>
+  {{/if}}
 </li>
